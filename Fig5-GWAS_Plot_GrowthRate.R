@@ -1,5 +1,5 @@
 library(tidyverse)
-setwd("C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/Timepoint Analysis/GWAS_Summaries")
+setwd("C:/")
 
 #####################################################
 #####################################################
@@ -9,9 +9,8 @@ setwd("C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MA
 #####################################################
 #####################################################
 
-Associations <- read.delim(file = "C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/filtered_snps_timepoint.csv", sep = ",")
-Associations <- read.delim(file = "clipboard", sep = "\t")
-Associations 
+# Significant_SNPS_GrowthRate.csv includes SNP, Chromosome, Position, p-value, Trait (Descriptor), Analysis (No covariates, Dw1, Dw3, Dw1+Dw3), and Population
+Associations <- read.delim(file = "Significant_SNPS_GrowthRate.csv", sep = ",")
 
 Associations$Analysis <- as.factor(Associations$Analysis)
 
@@ -34,10 +33,6 @@ Associations %>% filter(SNP %in% for_labels$SNP) %>% group_by(By_trait) %>% summ
 lst <- c(list$By_trait, PSP.f$By_trait) %>% sort()
 for_labels <- Associations %>% filter(By_trait %in% lst) %>% group_by(Population, Descriptor, SNP, Chr, Pos) %>% summarise(n = n()) %>% select(!n)
 
-write_delim(for_labels, 'C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/Timepoint Analysis/GWAS_Summaries/forlabels_pars.csv', delim = "\t")
-
-for_labels <- read.delim(file = "C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/Timepoint Analysis/GWAS_Summaries/forlabels_pars.csv", sep = '\t')
-#for_labels <- read.delim(file = "clipboard", sep = '\t')
 {
 
 #################################################
