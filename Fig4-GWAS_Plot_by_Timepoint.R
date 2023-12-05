@@ -1,5 +1,5 @@
 library(tidyverse)
-setwd("C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/Timepoint Analysis/GWAS_Summaries")
+setwd("C:/")
 
 #####################################################
 #####################################################
@@ -9,7 +9,8 @@ setwd("C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MA
 #####################################################
 #####################################################
 
-Associations <- read.delim(file = "C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/filtered_snps_timepoint.csv", sep = ",")
+# Significant_SNPS_timepoint.csv includes SNP, Chromosome, Position, p-value, Trait (Descriptor), Week (WAP), and Population
+Associations <- read.delim(file = "./Significant_SNPS_timepoint.csv", sep = ",")
 
 Associations$Week <- as.numeric(Associations$Week)
 Associations$Trait <- factor(Associations$Trait, levels = c("PBPH", "PBPW", "CHV", "PSA"))
