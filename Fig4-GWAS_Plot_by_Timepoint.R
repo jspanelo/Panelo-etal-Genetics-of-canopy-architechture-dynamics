@@ -25,11 +25,11 @@ levels(Associations$Population)[1] <- "PSP+SAP"
 SAP.f <- Associations %>% filter(Population == "SAP") %>% group_by(Population, SNP, Chr, Chrom, Pos, Trait) %>% summarise(n = n()) %>% filter(n > 1)
 PSP.f <- Associations %>% filter(Population == "PSP") %>% group_by(Population, SNP, Chr, Chrom, Pos, Trait) %>% summarise(n = n()) %>% filter(n > 1)
 Combined.f <- Associations %>% filter(Population == "PSP+SAP") %>% group_by(Population, SNP, Chr, Chrom, Pos, Trait) %>% summarise(n = n()) %>% filter(n > 1)
-# 
-# for_labels <- rbind(SAP.f, PSP.f, Combined.f)
-# write_delim(for_labels, 'forlabels.csv', delim = "\t")
 
-for_labels <- read.delim(file = "C:/Users/jpanelo/OneDrive - Iowa State University/Panelo/GAPIT_RES/PSP_MAF015/NumericGeno/Timepoint Analysis/GWAS_Summaries/forlabels.csv", sep = ',')
+# Significant_SNPS_labels.csv presents information on the SNPs discovered among different weeks.
+# Includes: SNP, Chromosome, Position, Population where the SNP was discovered
+
+for_labels <- read.delim(file = "Significant_SNPS_labels.csv", sep = ',')
 
 #################################################
 #################################################
